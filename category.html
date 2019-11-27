@@ -1,0 +1,23 @@
+---
+layout: default
+title: Categories
+---
+<ul class="posts-list">
+  
+  {% capture categories %}
+    {% for category in site.categories %}
+      {{ category[0] }}
+    {% endfor %}
+  {% endcapture %}
+  {% assign sortedcategories = categories | split:' ' | sort %}
+
+  {% for category in sortedcategories %}
+    <h4 id="{{ category }}">{{ category }}</h4>
+    <ul>
+    {% for post in site.categories[category] %}
+      <li><a href="{{ post.url | prepend: site.baseurl }}" class="post-link">{{ post.title }}</a></li>
+    {% endfor %}
+    </ul>
+  {% endfor %}
+  
+</ul>

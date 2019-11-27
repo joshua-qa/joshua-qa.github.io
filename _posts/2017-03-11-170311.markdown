@@ -1,0 +1,15 @@
+---
+layout: post
+title: 170311
+date: 2017-03-11 23:22:19
+categories:
+- Daily
+tags:
+- Daily
+---
+
+## 오늘 한 것
+
+*   https://github.com/facebookincubator/create-react-app
+    복잡한 작업 없이 react로 어플리케이션을 개발할 수 있는 환경을 세팅해준다. 직접 해보니 너무 간단해서 깜짝 놀랐다. 이참에 js도 마저 공부해야되는데..
+*   자료구조 & 알고리즘 스터디 모임 사람들이랑 오프라인에서 만나는 시간을 가졌다.

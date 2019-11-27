@@ -1,0 +1,54 @@
+---
+layout: post
+title: "[BOJ] 7469 - K번째 숫자"
+date: 2017-11-12 14:29:46
+tags: PS
+categories: PS
+---
+
+#### BOJ 7469 - K번째 숫자
+
+BOJ Tier에서 ★5.6으로 나와있어서 엄청 만만하게 생각했는데, 쉽지 않은 문제였다.
+
+나는 어떤 분 블로그를 참고해서 배열 한개로 간당간당하게 풀었고 정해는 Persistent Segment Tree나 Merge Sort Tree, Sqrt Decomposition 사용해서 하는거 같다.
+
+개념 자체는 이전에 들었던 강의나 블로그 찾아보면서 배웠던거지만 이 문제에 대해 어떤 식으로 저걸 구현해야할지 감이 안잡혀서 쉬운 방법 썼다. ㅠㅠ 그래도 1724MS면 제한시간 2초에 크게 어긋나지 않았다고 생각하니 이쯤 해두고, 나중에 C++로 꼭 풀어봐야겠다!
+
+
+
+#### 접근 방법
+
+다음과 같이 kthArray 클래스를 만든다. (원래라면 kthElement 정도로 이름 짓고 그래야 될 것 같은데 편의상 이렇게 썼다.)
+
+```java
+static class kthArray implements Comparable<kthArray> {
+    int index;
+    int num;
+
+    public kthArray(int i, int n) {
+        this.index = i;
+        this.num = n;
+    }
+
+    @Override
+    public int compareTo(kthArray o) {
+        return this.num - o.num;
+    }
+}
+```
+
+그 다음 kthArray 배열을 만들고, 입력 받은 순서대로 숫자를 넣어준다. index에는 이 숫자가 몇 번째 인덱스인지 저장하는게 핵심.
+
+다 입력 받았으면 `Arrays.sort`로 정렬해주고, 쿼리를 처리해준다. 정렬 기준은 숫자 (kthArray.num)
+
+사실 Comparable 쓸 필요 없이 `Comparator.comparingInt(k -> k.num)` 이용하는 것이 코드 한줄로 처리되어서 깔끔한데.. 두 방식으로 각각 제출해보니 300ms가 차이났다. 그래서 나는 일단 Comparable을 쓰겠다.
+
+쿼리는 조금 무식하게 돌려야 하는데, 가장 작은 숫자부터 순회를 시작해서 index가 i~j 사이에 들어가는 경우면 별도로 카운트를 세준다. 그 카운트가 쿼리의 k값과 동일하면 그 숫자를 반환.
+
+
+
+다른 방법은 도저히 이해가 안간다는 분들의 경우 이 방법으로 푸시면 좋을듯하다. C++로 1956ms에 통과하신 분도 있는걸 보면.. 아마 C++ 쓰시는 분들도 가능할 것 같은 느낌?!
+
+
+
+[전체 코드](https://github.com/joshua-qa/PS/blob/master/BOJ/7000/7469.java)

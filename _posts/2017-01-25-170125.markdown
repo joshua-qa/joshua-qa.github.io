@@ -1,0 +1,16 @@
+---
+layout: post
+title: 170125
+date: 2017-01-25 23:49:40
+tags:
+- Daily
+categories:
+- Daily
+---
+
+## 오늘 한 것
+* 스프링으로 만들어진 샘플 코드중에 [jpetstore](https://github.com/making/spring-jpetstore)라는 것이 있어서, 코드를 한번 들여다보기 시작했다.
+* 친구가 포켓몬GO 관련으로 운영하는 사이트가 있는데 유지보수 및 관리를 조금씩 도와주기 시작했다.
+* vue.js랑 swift를 조금 공부했다.
+* OS X에 bash -> zsh 변경 작업을 하다가 몇 가지가 꼬여서 다시 bash로 돌아왔다. zsh가 이쁘고 편하긴 한데.. 아직 잘 모르는 것들이 몇 가지 있다 ;;
+

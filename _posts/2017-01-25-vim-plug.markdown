@@ -1,0 +1,22 @@
+---
+layout: post
+title: vim-plug 간단한 소개
+date: 2017-01-25 23:50:17
+tags:
+- vim
+- plugin
+- vim-plug
+categories:
+- Dev
+---
+
+얼마전에 Vim 사용법을 공부하면서 세팅을 하다보니, Vim-Plug라는 것을 발견했다.
+
+Vundle처럼 Vim의 플러그인을 편하게 관리해주는 툴인데, 국내 개발자분이 만드셔서 그런지 개인적으로 Vundle보다 더 관심을 가지게 된 것 같다.
+
+설치도 어렵지 않고 vimrc 파일로 플러그인 설정하는 것도 간단하게 되어있기 때문에 매우 추천하고 싶다.
+
+https://github.com/junegunn/vim-plug
+
+이 분이 만드신 것 중에 [fzf](https://github.com/junegunn/fzf)라는 유명한 fuzzy finder 툴도 있는데 강력히 추천한다!
+(맥북 구매 이후 Bash를 사용하면서 많은 도움이 되고 있다)

@@ -1,0 +1,21 @@
+---
+layout: post
+title: 170219
+date: 2017-02-20 00:43:38
+tags:
+- Daily
+categories:
+- Daily
+---
+
+## 오늘 한 것
+
+* 평소 하던 공부를 하면서 https://github.com/jwasham/google-interview-university/blob/master/translations/README-ko.md 여기 있는 자료들을 같이 보기 시작했다. 
+  공부하면서 개인적으로 메모한 게 있는데, 정리가 안되어있는 상태라 별도로 모아놓기로 했다.
+
+  https://github.com/joshua-qa/CS_memo/blob/master/bitwise.md
+  유튜브에서 영어로 된 짧은 강의들을 보는 것도 도움이 되는 것 같다. 잘 설명해주기도 하고, 조금 느리게 설명해주는 영상도 많아서 영어 자막이랑 같이 보면 이해하기 편하다.
+
+* 작업하는 앱이 사용하고 있는 라이브러리 버전을 올려야 해서 살펴보는데 영향 받는 범위가 많아서 시간이 오래 걸릴 것 같다. (급한건 아니지만)
+
+* 개인 프로젝트는 낮에 외출을 해서 진행을 못했다 ;;

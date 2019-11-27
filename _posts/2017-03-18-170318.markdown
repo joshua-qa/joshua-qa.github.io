@@ -1,0 +1,14 @@
+---
+layout: post
+title: 170318
+date: 2017-03-18 23:42:06
+categories:
+- Daily
+tags:
+- Daily
+---
+
+## 오늘 한 것
+
+* LINE bot 만들기
+	* 개인 서버에 문제가 있어서 진척이 느려지고 있다... 빨리 인증서 문제 해결해야 ㅠㅠ

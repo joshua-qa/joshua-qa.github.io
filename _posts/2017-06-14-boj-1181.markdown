@@ -1,0 +1,46 @@
+---
+layout: post
+title: "[BOJ] 1181 - 단어 정렬"
+date: 2017-06-14 12:51:13
+categories:
+- PS
+tags:
+- PS
+---
+
+#### BOJ 1181
+
+----
+
+[링크](https://www.acmicpc.net/problem/1181)
+
+단어를 정렬하는 문제다. 그런데 조건이 하나가 아니고 두개다..
+
+제출하고 난뒤에 확인해보니, 나보다 효율적으로 푸신 분들이 많아서 보고 배울점이 제법 있었다.
+
+일단 내가 푼 방법은 다음과 같다.
+
+1) wordList라는 ArrayList를 만들고, input값이 이미 wordList에 있는 경우 삽입하지 않음.
+
+2) wordList 내부에 있는 값들을 비교하기 위한 Comparator을 한개 만들고, 조건을 지정
+
+```java
+Comparator<String> wordSort = new Comparator<String>() {
+  @Override
+  public int compare(String o1, String o2) {
+    if(o1.length() == o2.length()) {
+      return o1.compareTo(o2);
+    } else {
+      return o1.length() - o2.length();
+    }
+  }
+};
+```
+
+length가 같으면 서로간의 알파벳 서열을 비교하고, length가 같지 않으면 서로간의 길이 서열을 비교하는 식으로 만들어줬다.
+
+이후에 `Collections.sort(wordList, wordSort)` 이런 식으로 정렬을 해준 뒤 출력해주면 완료.
+
+
+
+[전체 코드 링크](https://github.com/joshua-qa/PS/blob/master/BOJ/1000/1181.java)

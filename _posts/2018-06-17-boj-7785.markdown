@@ -1,0 +1,99 @@
+---
+layout: post
+title: "[BOJ] 7785 - 회사에 있는 사람"
+date: 2018-06-17 14:14:00
+tags: PS
+categories: PS
+---
+
+### BOJ 7785 - 회사에 있는 사람 (http://icpc.me/7785)
+
+
+
+예전에 풀었는데 재채점 이후 틀려서 다시 풀었다.
+
+알고보니 내가 제대로 풀었다고 생각한 코드는 O(N^2)짜리 코드였고, N 제한이 1000000이니까 최악의 input에서는 무조건 시간초과가 날 수 밖에 없었다.
+
+
+
+처음 접근했던 방식은 다음과 같았다.
+
+```
+이름 input을 받음
+출입 로그 input을 받음
+if(출입 로그 첫번째 글자가 e라면)
+	ArrayList에 추가
+else
+	ArrayList에서 삭제
+
+ArrayList를 정렬
+
+StringBuilder에 담아서 출력
+```
+
+
+
+여기서 가장 큰 문제는 무엇이었을까?
+
+바로 삭제하는 부분이다.
+
+ArrayList에서 삭제하는 코드를 다음과 같이 구현했었다.
+
+```java
+enterList.remove(enterList.indexOf(name))
+```
+
+indexOf 메서드는 내부적으로 for문을 돌려서 해당 데이터가 나올때까지 순회하고, 발견했을 때 index값을 반환한다.
+
+여기서 일단 최악의 경우 O(N)이 걸리게 된다.
+
+remove 메서드는 해당 index 기준으로 뒤에 몇 개의 데이터가 있는지 계산하고 System.arraycopy로 index+1부터 끝까지의 데이터를 한칸 옆으로 복사해준다. (이후 마지막 index였던 위치의 값을 null로 바꿔줌)
+
+이 과정을 매번 반복해준다고 생각하면 시간초과가 날 수 밖에 없다. 게다가 위 코드 기준으로 정렬까지 고려하면....
+
+
+
+### 새로운 접근 방법
+
+출입 기록을 Map으로 관리하면 넣을때나 가져올때나 효율적으로 처리할 수 있을 것 같아서 다음과 같이 했다.
+
+```
+ap<String, Boolean> map = new HashMap<>(n);
+이름 input을 받음
+출입 로그 input을 받음
+if(출입 로그 첫글자가 e인 경우)
+	map.put(name, true)
+else
+	map.put(name, false)
+
+for(String name : map.keySet())
+	name key의 value가 true인 경우 ArrayList에 추가
+
+ArrayList 정렬
+
+StringBuilder에 담아서 출력
+```
+
+
+
+이런식으로 구현해줬더니 700ms정도로 통과했다.
+
+
+
+### 최선의 방법
+
+다른 사람들의 코드를 보고 한 가지 사실을 배울 수 있었다.
+
+바로 TreeSet을 이용하는 것이다.
+
+TreeSet은 내부적으로 Red-Black Tree를 이용(코드가 궁금한 경우 TreeMap 클래스를 열어보면 된다)하며, 사용자가 넣어준 Comparator를 기준으로 정렬된 순서로 데이터를 보관한다. (null 객체를 저장할 수 없으며 삽입한 순서를 보장하지 않음)
+
+데이터 삽입, 삭제의 시간 복잡도가 O(log N)이기 때문에 이 문제에서 충분히 잘 써먹을 수 있다.
+
+enter일때는 treeset에 넣고, leave일때는 제거하고.. 마지막에는 treeset에서 하나씩 꺼내서 출력하면 된다.
+
+
+
+이런 문제를 풀 때는 항상 사용법이 익숙한 애들 위주로 골라서 쓰는 버릇이 있는데.. 컬렉션 프레임워크를 전체적으로 더 잘 알고 써야겠다는 생각이 들었다.
+
+[전체 코드](https://github.com/joshua-qa/PS/blob/master/BOJ/7000/7785.java)

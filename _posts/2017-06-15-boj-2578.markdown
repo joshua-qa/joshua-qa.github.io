@@ -1,0 +1,102 @@
+---
+layout: post
+title: "[BOJ] 2578 - 빙고"
+date: 2017-06-15 14:00:46
+categories:
+- PS
+tags:
+- PS
+---
+
+#### BOJ 2578 - 빙고
+
+[문제 링크](https://www.acmicpc.net/problem/2578)
+
+재밌어보이는 문제여서 잠깐 풀어봤다.
+
+제출하고보니 틀려서, 반례를 여러개 작성해보다가 원인을 알게되었고 다시는 이런 실수를 하면 안되겠다는 것을 깨달음.
+
+우선, 어떤 식으로 함수를 짜야할지 생각해봤다.
+
+1) 배열에 숫자 넣기
+
+2) 배열에서 해당 숫자가 있는 위치를 찾아서 바꿔주기 (0을 찍어준다거나)
+
+3) 배열을 검사해서 빙고 카운트를 채웠는지 검사하기
+
+ 3-1) 가로열 검사
+
+ 3-2) 세로열 검사
+
+ 3-3) 대각선 2줄 검사
+
+ (1,1 2,2 3,3 4,4 5,5), (1,5 2,4 3,3 4,2 5,1)
+
+
+
+빙고 카운트 검사하는 함수에서 for문을 조금 무식하게 짰는데, 일단 대각선을 먼저 검사하고 그 다음에 가로열과 세로열을 한번에 검사하는 방식으로 구현했다.
+
+```java
+private static boolean checkBingo() {
+  int glineCount, slineCount, dCount1 = 0, dCount2 = 0;
+  count = 0;
+
+  for(int i = 0; i < 5; i++) {
+    glineCount = 0;
+    slineCount = 0;
+
+    if(bingo[i][i] == 0) {
+      dCount1++;
+    }
+    if(bingo[i][4-i] == 0) {
+      dCount2++;
+    }
+    for(int j = 0; j < 5; j++) {
+      if(bingo[i][j] == 0) {
+        glineCount++;
+      }
+      if(bingo[j][i] == 0) {
+        slineCount++;
+      }
+    }
+    if(glineCount == 5) {
+      count++;
+    }
+    if(slineCount == 5) {
+      count++;
+    }
+  }
+  if(dCount1 == 5) {
+    count++;
+  }
+  if(dCount2 == 5) {
+    count++;
+  }
+
+  if(count >= 3) {
+    return true;
+  } else {
+    return false;
+  }
+}
+```
+
+
+
+구현도 잘 됐고 테스트 케이스도 잘 굴러가서 신나있었는데, 제출해보니 틀렸다.
+
+
+
+반례를 짜보다가 '아!'하고 깨달은 것은 빙고카운트가 반드시 3일 때 통과하도록 구현한 것이다.
+
+두줄 그어진 상태에서 딱 한개의 체크로 네줄이 그어질 수도 있는건데, 그런 경우를 고려하지 않은 것이다.
+
+`if(count == 3)`을 `if(count >= 3)` 으로 변경하고 나서 모든 케이스를 통과할 수 있었다.
+
+
+
+결론 : 반례를 신중하게 생각해서 조건문을 잘 짜야된다.
+
+
+
+[전체 소스 코드](https://github.com/joshua-qa/PS/blob/master/BOJ/2000/2578.java)

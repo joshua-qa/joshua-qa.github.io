@@ -1,0 +1,108 @@
+---
+layout: post
+title: 190107-TIL
+date: 2019-01-07 22:25:10
+tags: TIL
+categories: Daily
+---
+
+비정기적으로 TIL을 쓰려고 한다.
+
+
+
+### Bash
+
+* mv 명령어에서 대상을 여러개 지정하거나 와일드카드를 사용할 수 있다.
+
+  * `mv -t <destination> <src1> <src2> .... <srnN>`
+
+  * 와일드카드는 cp 명령어에서도 써먹을 수 있음
+
+  * 그동안 복사할 / 옮길 디렉토리들을 하나하나 일일히 입력해서 사용했었다...
+
+  * 예시
+
+    ```bash
+    mv ./src/* /var/www
+
+    mv test1.txt test2.txt test3.java -t ./temp
+    ```
+
+  * 참고자료
+
+    * https://discuss.devopscube.com/t/how-to-move-mv-multiple-directories-or-files-to-a-folder-at-a-time/100
+
+
+
+### Git
+
+* git rebase에 대해 이해하기
+
+  * 여지껏 브랜치를 합칠 때 merge만 사용했었는데, rebase도 꼭 알아야되는 기능이었다.
+  * 현재 체크아웃한 브랜치가 a이고 마스터가 b라고 했을 때 `git rebase master`를 하게 되면?
+    * 두 브랜치가 나뉘기 전인 공통 커밋으로 이동
+    * 그 커밋부터 지금 체크아웃한 브랜치 (a)가 가리키는 커밋까지 diff를 차례로 만들어 어딘가에 임시로 저장함
+    * rebase할 브랜치(a)가 합칠 브랜치(b, 마스터)가 가리키는 커밋을 가리키게 하고 위에서 저장해 놓았던 변경사항을 차례대로 적용
+      * 솔직히 git-scm 한국어 번역 문장이 아주 조금 매끄럽지 못한 것 같다 ㅠㅠ 같이 제시된 이미지를 보고 이해했음.
+    * 이후 마스터(b)를 Fast-forward 시킨다.
+      * [Fast-forward란?](https://stackoverflow.com/questions/29673869/what-is-git-fast-forwarding)
+        * When you try to merge one commit with a commit that can be reached by following the first commit’s history, Git simplifies things by moving the pointer forward because there is no divergent work to merge together – this is called a “fast-forward.”
+        * 번역기 : 첫 번째 커밋의 히스토리를 따라 도달 할 수 있는 커밋과 하나의 커밋을 병합하려고 하면, Git은 병합할 다른 작업이 없으므로 포인터를 앞으로 이동하여 작업을 단순화합니다. 이를 "빨리 감기"라고 합니다.
+      * 왜 Fast-forward를 시킬까?
+        * '저장해 놓았던 변경사항을 차례대로 적용' 한 것으로 인하여, Git이 병합할 다른 작업이 없어졌음. 그러므로 포인터를 앞으로 이동.
+  * rebase의 장점은? 왜 이걸 쓸까?
+    * git-scm의 설명을 보면 아래와 같이 이야기하고 있다.
+      * rebase한 브랜치의 로그를 살펴보면 히스토리가 선형적임. merge로 합쳤을 때에 비해 좀 더 깔끔하게 보일 수 있음 (모든 작업이 차례대로 수행된 것처럼 보이기 때문에)
+      * 따라서, 리모트 브랜치에 커밋을 깔끔하게 적용하고 싶을 때 사용
+    * 아래와 같은 상황에서도 사용할 수 있다고 한다.
+      * master까지 이어지는 메인 흐름이 있고, 이 것과는 별도로 a브랜치랑 b브랜치로 이어지는 흐름이 있음.
+      * a는 작업이 덜됐고, 이 a랑 상관없는 b의 작업물들을 master에 merge할 일이 생김
+      * `--onto` 옵션을 사용하여  b의 작업물들을 master에 안전하게 적용할 수 있음.
+      * 자세한 내용은 [이 항목](https://git-scm.com/book/ko/v1/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase%ED%95%98%EA%B8%B0#%EC%A2%80-%EB%8D%94-Rebase) 참고.
+  * rebase가 무조건 만능은 아니고, 위험성이 분명히 존재하니 주의해서 써야함 (https://git-scm.com/book/ko/v1/Git-%EB%B8%8C%EB%9E%9C%EC%B9%98-Rebase%ED%95%98%EA%B8%B0#Rebase%EC%9D%98-%EC%9C%84%ED%97%98%EC%84%B1)
+
+* 느낀 점
+
+  * 별 생각 없이 쓰던 git이지만 알아야할 것도 많고 몰랐던 점이 의외로 많았다는 것을 알 수 있어서 반성하게 됐다.
+
+    * rebase의 사용 용도에서 언급된 상황은 내가 작년 하반기에 실제로 겪었던 상황이라 깜짝 놀랬다.
+  
+      그 때 상당히 어설픈 방식으로 브랜치를 관리했던 걸로 기억나는데, rebase를 조금이라도 알았다면 절대 그런 식으로 처리하지 않았을 것이다. 시간 날 때 git 관련 책이나 문서들을 읽어보고 잘 모르는 기능들을 실습해야겠다.
+
+
+
+### Docker
+
+* 실행중인 컨테이너를 한꺼번에 다 종료하고 삭제하기
+  * `docker stop $(docker ps -a -q)`
+    * 삭제할 때는 stop대신 rm 써주면 되고, 같은 방식으로 이미지 삭제할 때는 rmi 쓰고 뭐 그런 식.
+* 컨테이너에 붙어서 bash를 쓰고 싶다면?
+  * `docker exec -i -t 컨테이너명 /bin/bash`
+    * 참고자료 : http://pyrasis.com/book/DockerForTheReallyImpatient/Chapter20/08
+* 컨테이너에 붙어서 bash 쓰고 있다가, 빠져나올 때
+  * `Ctrl+P` 이후 `Ctrl+Q`
+    * 그냥 exit로 나오면 종료되니까 조심하자.
+
+
+
+### jQuery
+
+회사 레거시 코드 보다가, 비교적 처음 보는 것들이 있어서 간단하게 정리
+
+* `add()`
+  * 어떤 요소를 추가로 선택할 때 사용
+    * 이미 내가 선택해놓은 묶음이 있는데 거기에 다른 요소를 같이 지정하고 싶을 때
+    * 예를 들어, id가 a인 요소랑 b인 요소에 대해 같은 이벤트를 bind하고 싶으면 어떻게 해야하나?  각각 한 줄씩 따로 써줘야 하는가?
+      * `$('#a').add('#b').change(asdf)`
+* `change()`
+  * 요소의 값이 변경될 때 이벤트가 발생하도록 bind를 걸어줌
+    * `.bind('change', handler)` 을 줄여놓은 것
+    * change를 걸어놓고, `trigger('change')` 로 이를 동작하게 할 수 있음
+* `trigger()`
+  * 특정 이벤트 유형에 대해 선택된 요소에 연결된 모든 핸들러와 동작을 실행
+    * 예를 들어 어떤 요소에 change를 걸어놓고, 다른 메서드에서 `trigger('change')`를 통해  이걸 강제로 동작하도록 할 수 있다.
+  * 이 메서드를 제대로 이해하기 위해서는 js, 그리고 jQuery가 이벤트를 어떻게 처리하는지 정확히 이해할 필요가 있어보인다. 따라서 [이 문서](https://d2.naver.com/helloworld/1855209)를 읽어볼 예정.
+* selector에서 `^=` 사용
+  * `Attribute Starts With Selector` 라고 부르는 것 같다 (https://api.jquery.com/attribute-starts-with-selector/)
+  * `ab_cd`라는 형식으로 네이밍 되어 있는 요소를 찾다가 잘 안나와서 십분 정도 헤맸는데, 알고보니 이 것을 사용해서 그런 것이었다.
+    * `$("input[name^='ab_']")`

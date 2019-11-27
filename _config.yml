@@ -105,7 +105,7 @@ text:
 markdown:     kramdown
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
-permalink:    pretty
+permalink: /:year/:month/:day/:title:output_ext
 paginate:     4
 sass:
   style: compressed

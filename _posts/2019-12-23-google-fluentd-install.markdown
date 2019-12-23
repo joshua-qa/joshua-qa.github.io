@@ -37,7 +37,7 @@ https://github.com/GoogleCloudPlatform/fluent-plugin-google-cloud/issues/156
 
 전체 방법을 설명하면 아래와 같다.
 
-참고로 Workspace 생성법이나 
+참고로 Workspace 생성법이나 그 외 세팅에 대해서는 여기서 언급하지 않을 예정이다.
 
 1. GCP의 IAM 페이지에 들어가서 Stackdriver Logging 사용을 위한 서비스 계정을 1개 생성한다.
 2. 서비스 계정 생성 과정에서 인증키를 json 파일로 다운로드 받을 수 있는데, 이 파일의 이름을 `application_default_credentials.json`으로 변경하고 서버에 업로드한다.

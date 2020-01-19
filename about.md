@@ -11,6 +11,8 @@ tags: about
 
 ## Contact
 *   jgchoi.qa at gmail
+*   [LinkedIn](https://www.linkedin.com/in/jaegil-choi-b1049817a/)
+*   [Github](https://github.com/joshua-qa)
 
 #### Experience
 

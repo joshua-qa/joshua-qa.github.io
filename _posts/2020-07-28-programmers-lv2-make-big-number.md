@@ -1,3 +1,11 @@
+---
+layout: post
+title: "[프로그래머스] 레벨 2 - 큰수 만들기"
+date: 2020-07-28 12:23:01
+tags: PS
+categories: PS
+---
+
 ## 프로그래머스 레벨 2 - 큰수 만들기 (https://programmers.co.kr/learn/courses/30/lessons/42883)
 
 팀원 중에 한 분이 요즘 그리디 문제를 푸는데, 잘 안풀리는 문제가 있다고 해서 나도 한 번 살펴보게 되었다.

@@ -129,7 +129,9 @@ private void addIncludedProfiles(Set<Profile> includeProfiles) {
 이미 있는 active profiles 목록을 리셋하고 새로 세팅해주는 것을 볼 수 있다.
 
 1) `this.profiles`를 가져와 existingProfiles에 백업 후 내용물 삭제 (clear 호출)
+
 2) includeProfiles를 `this.profiles`에 삽입
+
 3) 백업해둔 existingProfiles를 `this.profiles`에 삽입
 
 최종적으로 `this.profiles`에 들어있는 값의 순서는 `includeProfiles값 -> 기존 activeProfiles값` 가 될 것이다.

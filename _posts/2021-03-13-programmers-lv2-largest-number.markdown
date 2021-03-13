@@ -75,7 +75,7 @@ s2 = "34" + "30" = "3430"
 
 ## 풀면서 그렸던 것
 
-![image]](/images/largest_number.png)
+![image](/images/largest_number.png)
 
 ## 느낀 점
 

@@ -128,7 +128,7 @@ if(dataSource == null) {
 
 해당 방식을 사용하는 것에 대해 주의할 점이 있다.
 
-### 최근 버전에서는 `MapJobrepositoryFactoryBean`이 deprecated 상태임
+### 최근 버전에서는 `MapJobRepositoryFactoryBean`이 deprecated 상태임
 
 [스프링 배치 4.3.1 문서의 MapJobRepositoryFactoryBean 설명](https://docs.spring.io/spring-batch/docs/current/api/org/springframework/batch/core/repository/support/MapJobRepositoryFactoryBean.html)을 한번 읽어보자.
 

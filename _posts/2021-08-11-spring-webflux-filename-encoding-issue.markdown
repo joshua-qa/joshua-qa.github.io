@@ -42,7 +42,7 @@ public Mono<String> upload(@RequestPart("file") Mono<FilePart> file, ServerWebEx
 
 ```java
 private HttpHeaders parseHeaders() {
-    ...
+	...
 	DataBuffer joined = this.buffers.get(0).factory().join(this.buffers);
 	this.buffers.clear();
 	String string = joined.toString(StandardCharsets.ISO_8859_1);
@@ -50,7 +50,7 @@ private HttpHeaders parseHeaders() {
 }
 ```
 
-Header를 파싱하는 과정에서 Charset를 ISO-8859-1로 지정하여 인코딩하는 것을 확인할 수 있었다.
+Header를 파싱하는 과정에서 Charset을 ISO-8859-1로 지정하여 인코딩하는 것을 확인할 수 있었다.
 
 참고로 Postman, Insomnia 등의 툴을 사용하여 요청을 보내는 경우, File Part에 붙어있는 Content-Disposition 헤더는 아래와 같다.
 

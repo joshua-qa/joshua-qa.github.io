@@ -21,4 +21,4 @@ tags: about
 *   NHN Entertainment Service - QA(Test Leader) (2015.02 ~ 2016.09)
 *   Foodtech - Back-End Developer (2018.01 ~ 2018.12)
 *   Socar - Back-End Developer (2019.01 ~ 2020.04)
-*   Wemakeprice - Back-End Developer (2020.06 ~ )
+*   Wemakeprice - Back-End Developer (2020.06 ~ 2022.02)

@@ -11,7 +11,6 @@ tags: about
 
 ## Contact
 *   jgchoi.qa at gmail
-*   [LinkedIn](https://www.linkedin.com/in/jaegil-choi-b1049817a/)
 *   [Github](https://github.com/joshua-qa)
 
 #### Experience
@@ -22,3 +21,4 @@ tags: about
 *   Foodtech - Back-End Developer (2018.01 ~ 2018.12)
 *   Socar - Back-End Developer (2019.01 ~ 2020.04)
 *   Wemakeprice - Back-End Developer (2020.06 ~ 2022.02)
+*   PATH - Back-End Developer (2022.02 ~ Now)

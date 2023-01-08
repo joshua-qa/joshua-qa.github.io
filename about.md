@@ -21,4 +21,4 @@ tags: about
 *   Foodtech - Back-End Developer (2018.01 ~ 2018.12)
 *   Socar - Back-End Developer (2019.01 ~ 2020.04)
 *   Wemakeprice - Back-End Developer (2020.06 ~ 2022.02)
-*   PATH - Back-End Developer (2022.02 ~ Now)
+*   PATH - Back-End Developer (2022.02 ~ 2022.12)

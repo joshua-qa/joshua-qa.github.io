@@ -22,3 +22,4 @@ tags: about
 *   Socar - Back-End Developer (2019.01 ~ 2020.04)
 *   Wemakeprice - Back-End Developer (2020.06 ~ 2022.02)
 *   PATH - Back-End Developer (2022.02 ~ 2022.12)
+*   WingEat - Back-End Developer (2022.12 ~ 2024.05)

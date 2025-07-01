@@ -4,7 +4,7 @@ email:       jgchoi.qa@gmail.com
 author:      Joshua
 description: "QA에서 개발로 전직한 주니어 개발자의 블로그입니다"
 baseurl:     ""
-url:         "http://blog.devjoshua.me"
+url:         "https://blog.shuashua.kr"
 date_format: "%b %-d, %Y"
 header_pages:
  - about.md
